@@ -1,9 +1,10 @@
 (function($, window) {
 
-$.browser.height = $(window).height();
-$.browser.width  = $(window).width();
-$.browser.mobile = /mobile|Android|webOS|iPhone|iPod/i.test(navigator.userAgent) ? true : //try to match useragent
-                        ($.browser.width / $.browser.height) < 1 && ($.browser.width * $.browser.height) <= 614400 ? true : //iPhone 4 resolution or lower in portrait mode
+var height = $(window).height();
+var width  = $(window).width();
+$.browser.mobile = /mobile|mini|Android|webOS|BlackBerry|iPhone|iPod/i.test(navigator.userAgent) ? true : //try to match useragent
+                        (width / height) < 1 && (width * height) <= 614400 ? true : //iPhone 4 resolution or lower in portrait mode
                         false;
+$.browser.ipad = /iPad/i.test(navigator.userAgent); //iPad is more powerful than most mobile devices, detect separately
 
 })(jQuery, window)
